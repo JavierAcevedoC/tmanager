@@ -4,7 +4,7 @@
 		<mat-divider></mat-divider>
 		<mat-selection-list #shoes>
 			@for (item of taskService.tasks(); track item) {
-				<mat-list-item class="m-1" [class.line-through]="item.select" style="border-radius: 15px;">	
+				<mat-list-item (click)="editTask(item)"  class="m-1" [class.line-through]="item.select" style="border-radius: 15px;">	
 						<mat-icon matListItemIcon>note</mat-icon>
 						<div matListItemTitle>{{item.name}}</div>
 						<div matListItemLine>{{item.description}}</div>
@@ -18,8 +18,14 @@
 		  </mat-selection-list>
 
 		<br>
-		<button mat-fab color="primary">
-			<mat-icon>add</mat-icon>
-		</button>
+		<div class="mt-1 p-1 flex justify-content-between">
+			<button mat-fab color="primary">
+				<mat-icon>add</mat-icon>
+			</button>
+			<button mat-fab color="accent">
+				<mat-icon>remove</mat-icon>
+			</button>
+		</div>
+	
 	</mat-card-content>
 </mat-card>

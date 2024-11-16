@@ -24,4 +24,8 @@ export class TaskManagerComponent {
   onSelected() {
     this.taskService.save();
   }
+
+  editTask(task: TaskModel) {
+    console.dir(task);
+  }
 }
