@@ -1,0 +1,22 @@
+<table mat-table [dataSource]="dataSource" matSort>
+
+	@for (item of dataSource.propertiesNames; track $index) {
+
+	<ng-container matColumnDef="{{item}}">
+		<th mat-header-cell *matHeaderCellDef mat-sort-header>{{item}}</th>
+		<td mat-cell *matCellDef="let element">
+			@if(item == 'select'){
+				<mat-checkbox [checked]="element[item]"></mat-checkbox>
+			} @else {
+				<mat-form-field appearance="outline">
+					<input matInput placeholder="item" [value]="element[item]" [(ngModel)]="element[item]">
+				</mat-form-field>
+			}
+		</td>
+	</ng-container>
+	}
+
+	<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+	<tr mat-row (click)="showItem(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<mat-paginator [length]="dataSource.data.length" hidePageSize="true" pageSize="4"></mat-paginator>

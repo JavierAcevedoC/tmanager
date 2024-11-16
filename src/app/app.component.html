@@ -1,0 +1,37 @@
+<div class="grid p-0 m-0">
+	<div class="col-12 md:col-6 lg:col-4">
+		<div class="grid">
+			<div class="col-12 md:col-12 lg:col-12">
+				<mat-card [appearance]="'outlined'">
+					<mat-card-content style="color: white;">
+						<div class="grid">
+							<div class="col-12">
+								<h1>Hola, <strong
+										style="color: greenyellow;">Javier</strong>
+									que bueno verte de vuelta !</h1>
+							</div>
+						</div>
+					</mat-card-content>
+				</mat-card>
+			</div>
+			<div class="col-12 md:col-12 lg:col-8">
+				<mat-card style="min-width: min-content;">
+					<mat-card-content>
+						<h2 class="text-white text-center"><strong style="color: greenyellow">Visita</strong> tu calendario</h2>
+						<mat-calendar [(selected)]="selected"></mat-calendar>
+					</mat-card-content>
+				</mat-card>
+			</div>
+		</div>
+	</div>
+	<div class="col-12 md:col-6 lg:col-6">
+		<div class="grid">
+			<div class="col-12 md:col-9 lg:col-4">
+				<app-greeting-percent></app-greeting-percent>	
+			</div>
+			<div class="col-12 md:col-12 lg:col-9">
+				<app-task-manager></app-task-manager>
+			</div>
+		</div>
+	</div>
+</div>

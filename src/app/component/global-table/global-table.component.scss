@@ -1,0 +1,15 @@
+@use '../../../styles' as c;
+
+.mat-mdc-row .mat-mdc-cell {
+  border-bottom: 1px solid transparent;
+  border-top: 1px solid transparent;
+  cursor: pointer;
+}
+
+.mat-mdc-row:hover .mat-mdc-cell {
+  //border-color: c.$warning;
+}
+
+.isReady {
+	background: red;
+}

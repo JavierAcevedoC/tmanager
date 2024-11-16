@@ -1,0 +1,18 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body {
+	height: 100%;
+	background: linear-gradient(0.25turn,darkslategray,greenyellow, darkslategray);
+}
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+// create a css rule that apply for all text in the web
+h1, h2, h3, h4, h5, h6, p, span {
+	font-family: "Doto", sans-serif !important;
+	font-weight: 400;
+	font-style: normal;
+	font-optical-sizing: auto;
+	font-variation-settings:
+	  "ROND" 0;
+  }
+  

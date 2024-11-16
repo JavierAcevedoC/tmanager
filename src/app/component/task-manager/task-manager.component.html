@@ -1,0 +1,25 @@
+<mat-card style="color: white;">
+	<mat-card-content>
+		<h3>Para <strong style="color: greenyellow;">hoy</strong> tienes:</h3>
+		<mat-divider></mat-divider>
+		<mat-selection-list #shoes>
+			@for (item of taskService.tasks(); track item) {
+				<mat-list-item class="m-1" [class.line-through]="item.select" style="border-radius: 15px;">	
+						<mat-icon matListItemIcon>note</mat-icon>
+						<div matListItemTitle>{{item.name}}</div>
+						<div matListItemLine>{{item.description}}</div>
+						<div matListItemLine>{{item.creation_date | date}}</div>
+				</mat-list-item>
+			    <mat-list-option class="m-1" style="border-radius: 15px;" [(selected)]="item.select" (selectedChange)="onSelected()">
+				Esta listo {{item.name}}?
+				</mat-list-option>
+				<mat-divider></mat-divider>
+			}
+		  </mat-selection-list>
+
+		<br>
+		<button mat-fab color="primary">
+			<mat-icon>add</mat-icon>
+		</button>
+	</mat-card-content>
+</mat-card>
