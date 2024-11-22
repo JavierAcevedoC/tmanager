@@ -12,6 +12,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatListModule} from '@angular/material/list';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
 	declarations: [],
@@ -28,7 +29,8 @@ import {MatListModule} from '@angular/material/list';
 		MatCheckboxModule,
 		MatFormFieldModule,
 		MatInputModule,
-		MatListModule
+		MatListModule,
+		MatDialogModule		
 	],
 	exports: [
 		MatButtonModule,
@@ -42,7 +44,8 @@ import {MatListModule} from '@angular/material/list';
 		MatCheckboxModule,
 		MatFormFieldModule,
 		MatInputModule,
-		MatListModule
+		MatListModule,
+		MatDialogModule
 	]
 })
 export class MaterialModule {}

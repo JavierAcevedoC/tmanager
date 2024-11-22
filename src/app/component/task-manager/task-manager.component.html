@@ -2,7 +2,12 @@
 	<mat-card-content>
 		<h3>Para <strong style="color: greenyellow;">hoy</strong> tienes:</h3>
 		<mat-divider></mat-divider>
-		<mat-selection-list #shoes>
+		@if(taskService.tasks() == null || taskService.tasks().length == 0){
+			<h3>
+ 				Puedes ingresar una tarea en el boton de <mat-icon color="primary">add</mat-icon>
+			</h3>
+		}
+		<mat-selection-list #tasks>
 			@for (item of taskService.tasks(); track item) {
 				<mat-list-item (click)="editTask(item)"  class="m-1" [class.line-through]="item.select" style="border-radius: 15px;">	
 						<mat-icon matListItemIcon>note</mat-icon>
@@ -19,11 +24,14 @@
 
 		<br>
 		<div class="mt-1 p-1 flex justify-content-between">
-			<button mat-fab color="primary">
+			<button (click)="openDialog()" mat-fab color="primary">
 				<mat-icon>add</mat-icon>
 			</button>
-			<button mat-fab color="accent">
-				<mat-icon>remove</mat-icon>
+			<button (click)="refresh()" mat-fab color="primary">
+				<mat-icon>refresh</mat-icon>
+			</button>
+			<button (click)="openDialog(false) "mat-fab color="accent">
+				<mat-icon>cleaning_services</mat-icon>
 			</button>
 		</div>
 	

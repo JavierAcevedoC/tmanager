@@ -1,7 +1,8 @@
-import { Component, model } from '@angular/core';
+import { Component, model, OnChanges, SimpleChanges } from '@angular/core';
 import {TaskManagerComponent} from './component/task-manager/task-manager.component';
 import {MaterialModule} from './component/material/material.module';
 import {GreetingPercentComponent} from './components/greeting-percent/greeting-percent.component';
+import { FormControl, FormControlName } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -15,8 +16,13 @@ import {GreetingPercentComponent} from './components/greeting-percent/greeting-p
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'tmanager';
+   title = 'tmanager';
   longText = " ";
   selected = model<Date | null>(null);
 
-}
+  constructor() {
+    this.selected.subscribe(data => {
+      console.dir(data);
+    })
+  }
+ }

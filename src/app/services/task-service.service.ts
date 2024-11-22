@@ -1,6 +1,7 @@
-import { computed, Injectable, Signal, signal, WritableSignal } from '@angular/core';
+import { computed, Injectable, signal, WritableSignal } from '@angular/core';
 import { TaskModel } from '../domain/taskModel';
-import { Observable, of } from 'rxjs';
+
+const NAME_ITEM_STORAGE = "tasks";
 
 @Injectable({
 	providedIn: 'root'
@@ -8,37 +9,30 @@ import { Observable, of } from 'rxjs';
 export class TaskService {
 	
 	tasks: WritableSignal<Array<TaskModel>> = signal([] as Array<TaskModel>);
-	count = signal(0);
-	double = computed(() => {return this.count() * 2});
 	
 	getPercent = computed(() => this.tasks());
 
-	increment() {
-		this.count.update(c => c + 1);
+	constructor() {
+		this.fillTaskFromLocalStorage();
 	}
 
-	constructor() {
-		this.tasks.set([
-				{
-			name: "Abedul",
-			description: "Aunque buscar como",
-			creation_date: new Date("10/01/2024"),
-			select: false
-		},
+	fillTaskFromLocalStorage() {
+		const items = localStorage.getItem(NAME_ITEM_STORAGE);
+		if(items) {
+			this.tasks.update(() => (JSON.parse(items) as Array<TaskModel>));
+		}
+	}
 
-		{
-			name: "Baaaaka",
-			description: "Aunque primero deberia",
-			creation_date: new Date(),
-			select: true
-		},
-
-		{
-			name: "Cazador X",
-			description: "Aunque primero como",
-			creation_date: new Date("10/25/1997"),
-			select: false
-		}]);
+	update(item: TaskModel) {
+		const byDateFound = this.tasks().find(i => i.creation_date === item.creation_date);
+		if(byDateFound === undefined) {
+			throw new Error("Not found item to update");
+		} else {		
+			byDateFound.name = item.name;
+			byDateFound.description = item.description;
+			this.tasks.update(tasks => tasks.filter(task => task.creation_date !== item.creation_date));
+			this.save(byDateFound);
+		}
 	}
 
 	save(item?: TaskModel): void {
@@ -48,8 +42,8 @@ export class TaskService {
 		localStorage.setItem('tasks', JSON.stringify(this.tasks()));
 	}
 
-	delete(task: TaskModel ,tasks: Array<TaskModel>) {
-		tasks.filter(item => item.name != task.name);
-		localStorage.setItem('tasks', JSON.stringify(this.tasks()));
+	cleanAlreadyDone() {
+		this.tasks.update(tasks => tasks.filter(task => !task.select));
+		this.save();
 	}
 }

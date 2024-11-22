@@ -19,7 +19,7 @@ export class GreetingPercentComponent {
 	constructor() {
 	}
 
-	getPercent = () => Math.round(this.taskService.getPercent().filter(item => item.select	== true).length / this.taskService.getPercent().length * 100);
+	getPercent = () => Math.round(this.taskService.getPercent().filter(item => item.select	== true).length / this.taskService.getPercent().length * 100) || 0;
 
 	createGreetingMessageByPercent(): string {
 		const tens: number = Number(this.getPercent().toString().split('').at(0));
