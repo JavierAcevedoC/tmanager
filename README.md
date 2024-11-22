@@ -7,14 +7,14 @@ This its just the first project of a serie that belong my portfolio.
 Here you can find some of tech like RxJS Signals and the basic and common of angular dev.
 
 Oriented to mobile first
-![01-mobile-first](pics/mobile_first.png)
+![00-mobile-first](pics/mobile_first.png)
 ![01-mobile-first](pics/mobile_first_01.png)
-![01-mobile-first](pics/mobile_first_02.png)
-![01-mobile-first](pics/mobile_first_03.png)
+![02-mobile-first](pics/mobile_first_02.png)
+![03-mobile-first](pics/mobile_first_03.png)
 
 And desktop view:
 
-![01-mobile-first](pics/mobile_first_04.png)
+![01-desktop](pics/mobile_first_04.png)
 
 
 ## Development server
