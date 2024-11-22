@@ -7,6 +7,7 @@ This its just the first project of a serie that belong my portfolio.
 Here you can find some of tech like RxJS Signals and the basic and common of angular dev.
 
 Oriented to mobile first
+
 ![00-mobile-first](pics/mobile_first.png)
 ![01-mobile-first](pics/mobile_first_01.png)
 ![02-mobile-first](pics/mobile_first_02.png)
